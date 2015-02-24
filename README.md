@@ -16,4 +16,4 @@ Sometimes you need to do
 
     sudo apt-get update
 
-to get the latest libraries.
+to get the latest libraries first.
