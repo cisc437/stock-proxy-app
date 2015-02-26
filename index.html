@@ -5,16 +5,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="ng-stock.js" type="text/javascript"></script>  
   </head>
+  <!-- In this app I used data-ng-* since data-XX is part of the official HTML5 specs
+  stockApp will be the module name, stockController the engine for this "view"
+  -->
   <body data-ng-app="stockApp" data-ng-controller="stockController">
     <h1>Get a stock price using YQL</h1>
    
     <label for="ticker"> Ticker here:</label>
+    <!-- the data-ng-model = "ticker" Put a $scope.ticker parameter into my controller.
+    I could access that value here with {{ticker}} or there as $scope.ticker.
+    -->
     <input type="text" placeholder="Put ticker here" data-ng-model="ticker"/>
     
+    <!-- ng-click="loadData()" will execute whatever I put there, so I had to 
+    call the function not just name it.  In the controler I needed $scope.loadData -->
     <button id="fetch" type="button" value="Fetch Data" data-ng-click="loadData()">Go</button>
     <hr/>
     <strong>Results: </strong>
     <ul id="results">
+      <!-- ng-repeat is one of the magical directives, this is an example of how 
+      you can use it to iterate JSON objects -->
       <li data-ng-repeat="(key, value) in query">
           <span>{{key}}</span>: <span>{{value}}</span>
       </li>
